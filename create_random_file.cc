@@ -14,19 +14,19 @@ int main(int argc, char *argv[]) {
 	struct timeb t;
 	ftime(&t);
 	long start_in_ms = t.time * 1000 + t.millitm;
-	printf("%s %ld %ld\n",filename,total_bytes,block_size);
-/*
+
 	FILE *fp = fopen(filename, "w");
 
 	long bytes_done = 0;
 	while (bytes_done < total_bytes){
 		memset(&buffer, 0, block_size);
 		if (total_bytes - bytes_done < block_size){
-
+			
+			bytes_done = total_bytes;
 			random_array(buffer, total_bytes - bytes_done);
 
 		} else {
-
+			bytes_done = bytes_done + block_size;
 			random_array(buffer, block_size);
 
 		}
@@ -36,6 +36,6 @@ int main(int argc, char *argv[]) {
 	long end_in_ms = t.time * 1000 + t.millitm;	
 	fclose(fp);
 	printf("time: %ld ls with a block_size of %ld\n", end_in_ms - start_in_ms, block_size);
-*/
+
   	return 0;
 }
