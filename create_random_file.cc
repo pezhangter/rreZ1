@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 	while (bytes_done < total_bytes){
 		memset(&buffer, 0, block_size);
 		if (total_bytes - bytes_done < block_size){
-			
+
 			bytes_done = total_bytes;
 			random_array(buffer, total_bytes - bytes_done);
 
@@ -33,9 +33,10 @@ int main(int argc, char *argv[]) {
 		fwrite(buffer, 1, block_size, fp);
 		fflush(fp);
 	}
+	ftime(&t);
 	long end_in_ms = t.time * 1000 + t.millitm;	
 	fclose(fp);
-	printf("time: %ld ls with a block_size of %ld\n", end_in_ms - start_in_ms, block_size);
+	printf("time: %ld ms with a block_size of %ld\n", end_in_ms - start_in_ms, block_size);
 
   	return 0;
 }
