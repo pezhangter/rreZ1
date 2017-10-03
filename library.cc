@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "library.h"
 /**
  * populate a random array (which is already
  * allocated with enough memory to hold n bytes.

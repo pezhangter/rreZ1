@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/timeb.h>
-#include "library.cc"
 #include "library.h"
 
 int main(int argc, char *argv[]) {
