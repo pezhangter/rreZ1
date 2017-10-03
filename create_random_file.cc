@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 			random_array(buffer, block_size);
 
 		}
-		fwrite(buf, 1, block_size, fp);
+		fwrite(buffer, 1, block_size, fp);
 		fflush(fp);
 	}
 	long end_in_ms = t.time * 1000 + t.millitm;	
