@@ -12,5 +12,5 @@ for i in range(10):
 	stdout = process.communicate()[0]#process.stdout.readline()#
 	stdout_array = stdout.split()
 	time = stdout_array[0]
-	f.write(str(time) + " " + str(block_size) + "\n")
+	f.write(str(time) + " " + str(block_sizes[i]) + "\n")
 f.close()
