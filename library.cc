@@ -29,15 +29,18 @@ void random_array(char *array, long bytes){
  * returns: -1 if there is an error.
  */
 int get_histogram(
+		printf("5 \n");
+
     FILE *file_ptr, 
     long hist[], 
     int block_size, 
     long *milliseconds, 
     long *total_bytes_read){
+	printf("6 \n");
 
 	fseek(file_ptr, 0, SEEK_END);
 	*total_bytes_read = (unsigned long) ftell(file_ptr);
-	fseek(from_file, 0, SEEK_SET);//go back to the beginning of the file
+	fseek(file_ptr, 0, SEEK_SET);//go back to the beginning of the file
 	struct timeb t;
 	ftime(&t);
 	long start_in_ms = t.time * 1000 + t.millitm;
@@ -47,6 +50,8 @@ int get_histogram(
 	long bytes_done = 0;
 	long bytes_to_read = 0;
 	int i;
+		printf("7 \n");
+
 	while (bytes_done < *total_bytes_read){
 		memset(&buffer, 0, block_size);
 		if (*total_bytes_read - bytes_done < block_size){
