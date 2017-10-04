@@ -36,7 +36,6 @@ int get_histogram(
     int block_size, 
     long *milliseconds, 
     long *total_bytes_read){
-	printf("6 \n");
 
 	fseek(file_ptr, 0, SEEK_END);
 	*total_bytes_read = (unsigned long) ftell(file_ptr);
@@ -50,21 +49,19 @@ int get_histogram(
 	long bytes_done = 0;
 	long bytes_to_read = 0;
 	int i;
-		printf("7 \n");
 
 	while (bytes_done < *total_bytes_read){
 		memset(&buffer, 0, block_size);
 		if (*total_bytes_read - bytes_done < block_size){
 
-			bytes_done = *total_bytes_read;
+			
 			bytes_to_read = *total_bytes_read - bytes_done;
 			fread(buffer, 1, bytes_to_read, file_ptr);
-
-		} else {
-			bytes_done = bytes_done + block_size;
+			bytes_done = *total_bytes_read;
+		} else {			
 			bytes_to_read = block_size;
 			fread(buffer, 1, bytes_to_read, file_ptr);
-
+			bytes_done = bytes_done + block_size;
 		}
 		for (i = 0; i < bytes_to_read; i++){
 			hist[buffer[i] - 'A'] += 1;

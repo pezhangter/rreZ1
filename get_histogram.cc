@@ -12,8 +12,9 @@ int main(int argc, char *argv[]) {
 	long milliseconds;
 	long filelen;
 
+
 	FILE *file_ptr = fopen(filename, "r");
-	 
+
 	int i;
 	for (i = 0; i < 26; i++){
 		hist[i] = 0;
