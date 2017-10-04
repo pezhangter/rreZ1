@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 	ftime(&t);
 	long end_in_ms = t.time * 1000 + t.millitm;	
 	fclose(fp);
-	printf("%ld bytes/second with a block_size of %ld\n", total_bytes/((end_in_ms - start_in_ms)/1000), block_size);
+	printf("%f bytes/second with a block_size of %ld\n", total_bytes/((end_in_ms - start_in_ms)/1000), block_size);
 
   	return 0;
 }
