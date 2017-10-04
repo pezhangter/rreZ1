@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	for(int i=0; i < 26; i++) {
 	    printf("%c : %ld\n", 'A' + i, hist[i]);
 	}
-	printf("Data rate: %f Bps\n", (double)filelen/milliseconds * 1000);
+	//rintf("Data rate: %f Bps\n", (double)filelen/milliseconds * 1000);
 
 	return 0;
 }
