@@ -25,7 +25,8 @@ int main(int argc, char *argv[]) {
 	                         block_size,
 	                         &milliseconds,
 	                         &filelen);
-	 
+	
+	printf("%f Bps\n", (double)filelen/milliseconds * 1000); 
 	printf("%ld ms.\n", milliseconds);
 	printf("%ld Bytes of BLOCK SIZE\n", block_size);
 	printf("%ld Bytes of TOTAL BYTES\n", filelen);
