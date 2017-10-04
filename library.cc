@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+#include <sys/timeb.h>
 /**
  * populate a random array (which is already
  * allocated with enough memory to hold n bytes.
@@ -42,12 +44,12 @@ int get_histogram(
 	long bytes_done = 0;
 	long bytes_to_read = 0;
 	int i;
-	while (bytes_done < total_bytes_read){
-		bzero(buffer);
-		if (total_bytes_read - bytes_done < block_size){
+	while (bytes_done < *total_bytes_read){
+		memset(&buffer, 0, block_size);
+		if (*total_bytes_read - bytes_done < block_size){
 
-			bytes_done = total_bytes_read;
-			bytes_to_read = total_bytes_read - bytes_done;
+			bytes_done = *total_bytes_read;
+			bytes_to_read = *total_bytes_read - bytes_done;
 			fread(buffer, 1, bytes_to_read, file_ptr);
 
 		} else {
