@@ -18,18 +18,16 @@ int main(int argc, char *argv[]) {
 	for (i = 0; i < 26; i++){
 		hist[i] = 0;
 	}
-	FILE *file_ptr = fopen(filename, "w");
-	
+
 	int ret = get_histogram( file_ptr, 
 	                         hist, 
 	                         block_size,
 	                         &milliseconds,
 	                         &filelen);
-	assert(! ret < 0)
 	 
-	printf("%d ms.\n", milliseconds);
-	printf("%d Bytes of BLOCK SIZE\n", milliseconds);
-	printf("%d Bytes of TOTAL BYTES\n", milliseconds);
+	printf("%ld ms.\n", milliseconds);
+	printf("%ld Bytes of BLOCK SIZE\n", block_size);
+	printf("%ld Bytes of TOTAL BYTES\n", filelen);
 
 	for(int i=0; i < 26; i++) {
 	    printf("%c : %d\n", 'A' + i, hist[i]);

@@ -35,6 +35,9 @@ int get_histogram(
     long *milliseconds, 
     long *total_bytes_read){
 
+	fseek(file_ptr, 0, SEEK_END);
+	*total_bytes_read = (unsigned long) ftell(file_ptr);
+
 	struct timeb t;
 	ftime(&t);
 	long start_in_ms = t.time * 1000 + t.millitm;
