@@ -29,7 +29,6 @@ void random_array(char *array, long bytes){
  * returns: -1 if there is an error.
  */
 int get_histogram(
-		printf("5 \n");
 
     FILE *file_ptr, 
     long hist[], 
