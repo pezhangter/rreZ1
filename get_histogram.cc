@@ -1,16 +1,40 @@
-/**
- * file_ptr : the file pointer, ready to be read from.
- * hist: an array to hold 26 long integers.  hist[0] is the
- *       number of 'A', and hist[1] is the number of 'B', etc.
- * block_size: the buffer size to be used.
- * milliseconds: time it took to complete the file scan
- * total_bytes_read: the amount data in bytes read
- *
- * returns: -1 if there is an error.
- */
-int get_histogram(
-    FILE *file_ptr, 
-    long hist[], 
-    int block_size, 
-    long *milliseconds, 
-    long *total_bytes_read);
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/timeb.h>
+#include "library.h"
+
+int main(int argc, char *argv[]) {
+	char *filename = argv[1];
+	long block_size = strtol(argv[2], NULL, 10);
+
+	long hist[26];
+	long milliseconds;
+	long filelen;
+
+	FILE *file_ptr = fopen(filename, "r");
+	 
+	int i;
+	for (i = 0; i < 26; i++){
+		hist[i] = 0;
+	}
+	FILE *file_ptr = fopen(filename, "w");
+	
+	int ret = get_histogram( file_ptr, 
+	                         hist, 
+	                         block_size,
+	                         &milliseconds,
+	                         &filelen);
+	assert(! ret < 0)
+	 
+	printf("%d ms.\n", milliseconds);
+	printf("%d Bytes of BLOCK SIZE\n", milliseconds);
+	printf("%d Bytes of TOTAL BYTES\n", milliseconds);
+
+	for(int i=0; i < 26; i++) {
+	    printf("%c : %d\n", 'A' + i, hist[i]);
+	}
+	printf("Data rate: %f Bps\n", (double)filelen/milliseconds * 1000);
+
+	return 0;
+}
