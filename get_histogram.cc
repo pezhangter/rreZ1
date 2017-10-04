@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 	printf("%ld Bytes of TOTAL BYTES\n", filelen);
 
 	for(int i=0; i < 26; i++) {
-	    printf("%c : %d\n", 'A' + i, hist[i]);
+	    printf("%c : %ld\n", 'A' + i, hist[i]);
 	}
 	printf("Data rate: %f Bps\n", (double)filelen/milliseconds * 1000);
 
