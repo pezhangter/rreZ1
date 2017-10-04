@@ -1,15 +1,16 @@
 from subprocess import Popen, PIPE
 import subprocess
+
+KB = 1024
+MB = 1024 * KB
 filename = "random_file"
-total_bytes = 100
-block_size = 100
-
-process = subprocess.Popen(["./create_random_file", filename, "%d" % total_bytes, "%d" % block_size],stdout=PIPE)
-stdout = process.stdout.readline()#process.communicate()[0]
-
-stdout_array = stdout.split()
-time = stdout_array[0]
-
+total_bytes = 20# * MB
+block_sizes = [1,2,3,4,5,6,7,8,9,10]#[100, 500, 1 * KB, 5 * KB, 10 * KB, 50 * KB, 100 * KB, 500 * KB, 1 * MB, 3 * MB]
 f = open('result.txt', 'w')
-f.write(str(time) + " " + str(block_size) + "\n")
+for i in range(10):
+	process = subprocess.Popen(["./create_random_file", filename, "%d" % total_bytes, "%d" % block_sizes[i]],stdout=PIPE)
+	stdout = process.communicate()[0]#process.stdout.readline()#
+	stdout_array = stdout.split()
+	time = stdout_array[0]
+	f.write(str(time) + " " + str(block_size) + "\n")
 f.close()
