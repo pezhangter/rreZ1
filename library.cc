@@ -8,8 +8,9 @@
  * allocated with enough memory to hold n bytes.
  */
 void random_array(char *array, long bytes){
-	time_t t;	
-	srand(NULL);
+	struct timeb t;
+	ftime(&t);
+	srand((unsigned) time(&t));
 	int i;
 	for (i = 0; i < bytes; i++){
 		
