@@ -12,7 +12,6 @@ int main(int argc, char *argv[]) {
 	long milliseconds;
 	long filelen;
 
-
 	FILE *file_ptr = fopen(filename, "r");
 
 	int i;
@@ -34,7 +33,6 @@ int main(int argc, char *argv[]) {
 	for(int i=0; i < 26; i++) {
 	    printf("%c : %ld\n", 'A' + i, hist[i]);
 	}
-	//rintf("Data rate: %f Bps\n", (double)filelen/milliseconds * 1000);
 
 	return 0;
 }
