@@ -50,7 +50,7 @@ int get_histogram(
 	int i;
 
 	while (bytes_done < *total_bytes_read){
-		memset(&buffer, 0, block_size);
+		memset(&buffer, 0, block_size);//clear whatever was inside the buffer
 		if (*total_bytes_read - bytes_done < block_size){
 		
 			bytes_to_read = *total_bytes_read - bytes_done;

@@ -8,7 +8,7 @@ block_sizes = [100, 500, 1 * KB, 5 * KB, 10 * KB, 50 * KB, 100 * KB, 500 * KB, 1
 f = open('read_result.txt', 'w')
 for i in range(10):
 	process = subprocess.Popen(["./get_histogram", filename, "%d" % block_sizes[i]],stdout=PIPE)
-	stdout = process.communicate()[0]#process.stdout.readline()#
+	stdout = process.communicate()[0]
 	stdout_array = stdout.split()
 	speed = stdout_array[0]
 	f.write(str(round(float(speed),2)) + " " + str(block_sizes[i]) + "\n")
