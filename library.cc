@@ -9,9 +9,10 @@
  */
 void random_array(char *array, long bytes){
 	time_t t;	
+	srand(NULL);
 	int i;
 	for (i = 0; i < bytes; i++){
-		srand((unsigned) time(&t));
+		
 		char c = 'A' + (rand() % 26);
 		array[i] = c;
 	}
