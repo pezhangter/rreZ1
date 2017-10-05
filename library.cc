@@ -8,12 +8,11 @@
  * allocated with enough memory to hold n bytes.
  */
 void random_array(char *array, long bytes){
-	struct timeb t;
-	ftime(&t);
+	time_t t;
 	srand((unsigned) time(&t));
+
 	int i;
 	for (i = 0; i < bytes; i++){
-		
 		char c = 'A' + (rand() % 26);
 		array[i] = c;
 	}
