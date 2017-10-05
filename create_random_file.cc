@@ -22,16 +22,18 @@ int main(int argc, char *argv[]) {
 		memset(&buffer, 0, block_size);
 		if (total_bytes - bytes_done < block_size){
 			
-			random_array(buffer, total_bytes - bytes_done);
+			random_array(buffer, total_bytes - bytes_done);			
+			fwrite(buffer, 1, total_bytes - bytes_done, fp);
+			fflush(fp);
 			bytes_done = total_bytes;
-
 		} else {			
 			random_array(buffer, block_size);
+			fwrite(buffer, 1, block_size, fp);
+			fflush(fp);			
 			bytes_done = bytes_done + block_size;
 
 		}
-		fwrite(buffer, 1, block_size, fp);
-		fflush(fp);
+		
 	}
 	ftime(&t);
 	long end_in_ms = t.time * 1000 + t.millitm;	
